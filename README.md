@@ -6,7 +6,7 @@ A Chrome extension for securely storing and managing secrets with CSV import/exp
 
 ## Features
 
-- ✅ Add secrets with title/name and secret value
+- ✅ Add secrets with title and secret value
 - ✅ View all stored secrets
 - ✅ Edit existing secrets
 - ✅ Delete secrets
@@ -26,7 +26,7 @@ A Chrome extension for securely storing and managing secrets with CSV import/exp
 ## Usage
 
 1. Click the extension icon in your Chrome toolbar
-2. Enter a title/name and secret value in the form
+2. Enter a title and secret value in the form
 3. Click "Add Secret" to save
 4. Use the eye icon to expand/collapse secret values (accordion-style)
 5. Click "Edit" to modify a secret
