@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Secrets Manager</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Secrets Manager</h1>
+    </header>
+
+    <div class="actions">
+      <button id="importBtn" class="btn btn-secondary">Import CSV</button>
+      <button id="exportBtn" class="btn btn-secondary">Export CSV</button>
+      <input type="file" id="fileInput" accept=".csv" style="display: none;">
+    </div>
+
+    <form id="secretForm" class="secret-form">
+      <div class="form-group">
+        <input type="text" id="titleInput" placeholder="Title/Name" required>
+      </div>
+      <div class="form-group">
+        <input type="text" id="secretInput" placeholder="Secret" required>
+      </div>
+      <button type="submit" class="btn btn-primary">Add Secret</button>
+    </form>
+
+    <div class="secrets-list" id="secretsList">
+      <p class="empty-message">No secrets stored yet. Add one above!</p>
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

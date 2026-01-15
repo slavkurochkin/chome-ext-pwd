@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Icon Generator</title>
+</head>
+<body>
+  <h2>Icon Generator for Secrets Manager Extension</h2>
+  <p>Open this file in a browser and use browser dev tools or screenshot to create icons.</p>
+  <canvas id="canvas16" width="16" height="16" style="border: 1px solid #ccc; image-rendering: pixelated;"></canvas>
+  <canvas id="canvas48" width="48" height="48" style="border: 1px solid #ccc;"></canvas>
+  <canvas id="canvas128" width="128" height="128" style="border: 1px solid #ccc;"></canvas>
+  <script>
+    function drawIcon(canvas, size) {
+      const ctx = canvas.getContext('2d');
+      // Background
+      const gradient = ctx.createLinearGradient(0, 0, size, size);
+      gradient.addColorStop(0, '#667eea');
+      gradient.addColorStop(1, '#764ba2');
+      ctx.fillStyle = gradient;
+      ctx.fillRect(0, 0, size, size);
+      
+      // Draw lock icon
+      ctx.fillStyle = 'white';
+      const lockSize = size * 0.5;
+      const lockX = (size - lockSize) / 2;
+      const lockY = (size - lockSize) / 2 + lockSize * 0.1;
+      
+      // Lock body
+      ctx.fillRect(lockX, lockY + lockSize * 0.3, lockSize, lockSize * 0.7);
+      // Lock shackle (arc)
+      ctx.strokeStyle = 'white';
+      ctx.lineWidth = Math.max(2, size / 8);
+      ctx.beginPath();
+      ctx.arc(lockX + lockSize / 2, lockY + lockSize * 0.3, lockSize * 0.25, 0, Math.PI);
+      ctx.stroke();
+    }
+    
+    drawIcon(document.getElementById('canvas16'), 16);
+    drawIcon(document.getElementById('canvas48'), 48);
+    drawIcon(document.getElementById('canvas128'), 128);
+    
+    // Add download buttons
+    function downloadCanvas(canvas, filename) {
+      canvas.toBlob(function(blob) {
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = filename;
+        a.click();
+        URL.revokeObjectURL(url);
+      });
+    }
+    
+    document.getElementById('canvas16').addEventListener('click', () => downloadCanvas(document.getElementById('canvas16'), 'icon16.png'));
+    document.getElementById('canvas48').addEventListener('click', () => downloadCanvas(document.getElementById('canvas48'), 'icon48.png'));
+    document.getElementById('canvas128').addEventListener('click', () => downloadCanvas(document.getElementById('canvas128'), 'icon128.png'));
+    
+    console.log('Click on each canvas to download the icon');
+  </script>
+</body>
+</html>
